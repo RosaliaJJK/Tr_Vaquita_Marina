@@ -31,14 +31,17 @@ router.post('/register', async (req, res) => {
       return res.redirect('/auth/login');
     }
 
-    const [exists] = await db.query('SELECT id FROM usuarios WHERE nombre_usuario = ?', [usuario]);
+    const [exists] = await db.execute(
+      'SELECT id FROM usuarios WHERE nombre_usuario = ?', 
+      [usuario]
+    );
     if (exists.length > 0) {
       req.session.error_message = 'El nombre de usuario ya está registrado';
       return res.redirect('/auth/register');
     }
 
     // guardamos la contraseña en texto (solo para práctica)
-    await db.query(
+    await db.execute(
       'INSERT INTO usuarios (nombre_usuario, contrasena_hash) VALUES (?, ?)', 
       [usuario, contrasena]
     );
@@ -57,7 +60,7 @@ router.post('/login', async (req, res) => {
   try {
     const { usuario, contrasena } = req.body;
 
-    const [rows] = await db.query(
+    const [rows] = await db.execute(
       'SELECT * FROM usuarios WHERE nombre_usuario = ?',
       [usuario]
     );

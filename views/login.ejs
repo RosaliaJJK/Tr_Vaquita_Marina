@@ -2,8 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Login - Vaquita Marina</title>
-  <!-- usa /styles.css porque app.use(express.static('public')) sirve /styles.css -->
+  <title>Login / Registro - Vaquita Marina</title>
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -15,6 +14,7 @@
     <div class="formularios">
       <h2>🌊 REGISTRO 🐳</h2>
 
+      <!-- Formulario de registro -->
       <form action="/auth/register" method="POST">
         <input type="text" name="usuario" placeholder="Nuevo Usuario" required>
         <input type="password" name="contrasena" placeholder="Contraseña (Mín. 6, con símbolo)" required>
@@ -24,17 +24,20 @@
       <hr>
 
       <h2>🔑 INICIO DE SESIÓN</h2>
+
+      <!-- Formulario de login -->
       <form action="/auth/login" method="POST">
         <input type="text" name="usuario" placeholder="Usuario" required>
         <input type="password" name="contrasena" placeholder="Contraseña" required>
         <button type="submit" class="btn-login">Ingresar</button>
       </form>
 
-      <% if (typeof error !== 'undefined' && error) { %>
+      <!-- Mensajes de error o éxito -->
+      <% if (error) { %>
         <div class="alert error"><%= error %></div>
       <% } %>
 
-      <% if (typeof success !== 'undefined' && success) { %>
+      <% if (success) { %>
         <div class="alert success"><%= success %></div>
       <% } %>
     </div>
