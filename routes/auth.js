@@ -31,7 +31,8 @@ router.post('/register', async (req, res) => {
       return res.redirect('/auth/login');
     }
 
-    const [exists] = await db.execute(
+    // Verificar si usuario ya existe
+    const [exists] = await db.query(
       'SELECT id FROM usuarios WHERE nombre_usuario = ?', 
       [usuario]
     );
@@ -40,8 +41,8 @@ router.post('/register', async (req, res) => {
       return res.redirect('/auth/register');
     }
 
-    // guardamos la contraseña en texto (solo para práctica)
-    await db.execute(
+    // Guardar contraseña tal cual (solo práctica)
+    await db.query(
       'INSERT INTO usuarios (nombre_usuario, contrasena_hash) VALUES (?, ?)', 
       [usuario, contrasena]
     );
@@ -60,7 +61,7 @@ router.post('/login', async (req, res) => {
   try {
     const { usuario, contrasena } = req.body;
 
-    const [rows] = await db.execute(
+    const [rows] = await db.query(
       'SELECT * FROM usuarios WHERE nombre_usuario = ?',
       [usuario]
     );
@@ -72,7 +73,7 @@ router.post('/login', async (req, res) => {
 
     const user = rows[0];
 
-    // comparamos texto simple
+    // Comparación simple de contraseña
     if (contrasena !== user.contrasena_hash) {
       req.session.error_message = 'Contraseña incorrecta';
       return res.redirect('/auth/login');
@@ -88,8 +89,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// logout
-router.get('/logout', (req,res)=>{
+// Logout
+router.get('/logout',(req,res)=>{
   req.session.destroy(()=> res.redirect('/auth/login'));
 });
 
