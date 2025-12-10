@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Vaquita Marina</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="contenedor-login">
+        <div class="imagen-login">
+            <img src="vaquita.jpg" alt="Ilustración de Vaquita Marina o Manatí">
+            
+        </div>
+
+        <div class="formularios">
+            <h2>🌊 REGISTRO 🐳</h2>
+            <form action="registro.php" method="POST" id="form-registro">
+                <input type="text" name="usuario" placeholder="Nuevo Usuario" required>
+                <input type="password" name="contrasena" placeholder="Contraseña (Mín. 6, con símbolo)" required>
+                <button type="submit" class="btn-registro">Registrar</button>
+            </form>
+
+            <hr>
+
+            <h2>🔑 INICIO DE SESIÓN</h2>
+            <form action="/login" method="POST">
+                <input type="text" name="usuario" placeholder="Usuario" required>
+                <input type="password" name="contrasena" placeholder="Contraseña" required>
+                <button type="submit" class="btn-login">Ingresar</button>
+                </form>
+        </div>
+    </div>
+</body>
+</html>

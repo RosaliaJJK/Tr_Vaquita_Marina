@@ -1,0 +1,162 @@
+:root {
+    --color-principal: #0077b6; /* Azul Océano */
+    --color-secundario: #00b4d8; /* Turquesa */
+    --color-fondo: #f0f8ff; /* Blanco Azulado Suave */
+    --color-texto: #333;
+    --color-acento-verde: #00a896; /* Verde Alga */
+}
+
+/* Estilos Generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+h2 {
+    color: var(--color-principal);
+    border-bottom: 2px solid var(--color-secundario);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+a {
+    color: var(--color-principal);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-acento-verde);
+}
+
+/* Estilos para login.html */
+.contenedor-login {
+    display: flex;
+    max-width: 900px;
+    margin: 50px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.imagen-login {
+    flex: 1;
+    background-color: var(--color-secundario);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagen-login img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.formularios {
+    flex: 1;
+    padding: 40px;
+}
+
+.formularios form input[type="text"],
+.formularios form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.formularios button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.btn-login {
+    background-color: var(--color-principal);
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #005f99;
+}
+
+.btn-registro {
+    background-color: var(--color-acento-verde);
+    color: white;
+}
+
+.btn-registro:hover {
+    background-color: #008f7d;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #eee;
+    margin: 30px 0;
+}
+
+
+/* Estilos para habitat.html y caracteristicas.html */
+.contenedor-info {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-principal {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.nav-principal a {
+    margin: 0 15px;
+    padding: 8px 15px;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-secundario);
+    border-radius: 5px;
+}
+
+.imagen-tema {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.imagen-tema img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    margin-left: 20px;
+    list-style: disc;
+}
+
+li {
+    margin-bottom: 10px;
+}
