@@ -1,10 +1,10 @@
 // routes/auth.js
 const express = require('express');
 const router = express.Router();
-const db = require('../config/db'); 
+const db = require('../config/db'); // usa tu wrapper con .query()
 
 // GET vistas
-router.get('/login', (req,res)=>{
+router.get('/login', (req, res) => {
   res.render('login', {
     error: req.session.error_message || null,
     success: req.session.success_message || null
@@ -13,8 +13,8 @@ router.get('/login', (req,res)=>{
   req.session.success_message = null;
 });
 
-router.get('/register', (req,res)=>{
-  res.render('register', {
+router.get('/register', (req, res) => {
+  res.render('login', { // mostramos login.ejs que tiene registro y login juntos
     error: req.session.error_message || null,
     success: req.session.success_message || null
   });
@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
     );
     if (exists.length > 0) {
       req.session.error_message = 'El nombre de usuario ya está registrado';
-      return res.redirect('/auth/register');
+      return res.redirect('/auth/login');
     }
 
     // Guardar contraseña tal cual (solo práctica)
@@ -47,12 +47,12 @@ router.post('/register', async (req, res) => {
       [usuario, contrasena]
     );
 
-    req.session.success_message = 'Registro exitoso. Inicia sesión';
+    req.session.success_message = 'Registro exitoso. Ahora inicia sesión';
     return res.redirect('/auth/login');
   } catch (err) {
     console.error('Error register:', err);
     req.session.error_message = 'Error en servidor';
-    return res.redirect('/auth/register');
+    return res.redirect('/auth/login');
   }
 });
 
@@ -90,8 +90,8 @@ router.post('/login', async (req, res) => {
 });
 
 // Logout
-router.get('/logout',(req,res)=>{
-  req.session.destroy(()=> res.redirect('/auth/login'));
+router.get('/logout', (req, res) => {
+  req.session.destroy(() => res.redirect('/auth/login'));
 });
 
 module.exports = router;

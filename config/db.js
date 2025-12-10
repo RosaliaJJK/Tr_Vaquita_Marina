@@ -5,10 +5,9 @@ const pool = mysql.createPool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  port: Number(process.env.DB_PORT) || 3306   // <-- convertir a número
+  port: Number(process.env.DB_PORT) || 3306 // convierte a número
 });
 
-// Exportar un wrapper para que tenga .query()
 module.exports = {
   query: (sql, params) => pool.execute(sql, params)
 };
