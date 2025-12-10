@@ -28,4 +28,5 @@ app.set('view engine', 'ejs');
 app.use('/auth', authRoutes);
 app.use('/', pagesRoutes);
 
-app.listen(3000, () => console.log('Servidor ON ➤ http://localhost:3000'));
+app.listen(process.env.PORT || 3000, () => console.log('Servidor corriendo'));
+
